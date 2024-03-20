@@ -1,0 +1,281 @@
+:root {
+  --main-color: #0A3871;
+  --border-radius: 2.8rem;
+  --bg-body:#F3F5FC;
+  --font: "inter", sans-serif; 
+  font-size: 62.5%;
+}
+
+* {    
+  margin: 0;        
+  padding: 0;        
+  box-sizing: border-box;        
+  -webkit-font-smoothing: antialiased;
+  -moz-ozx-font-smoothing: grayscale;       
+}
+
+body {
+  background-color:var(--bg-body);
+  font-size: 1.6rem;
+}
+
+body * {
+  font-family: var(--font);        
+  font-optical-sizing: auto;        
+  font-weight: 400;        
+}
+
+#app {
+  width: 100vw;
+  height: 90vh;
+  display: grid;
+  padding: 3rem;
+  margin: auto;
+  width: 1440px;
+  background: #fff;
+  border-radius: 1.5rem;
+  margin-top: 4rem;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+main {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+img.logo-alura { 
+  height: max-content;
+}
+section {
+  width: 49%;
+}
+header {
+  display: flex;
+  margin-bottom: 2rem;
+}
+textarea {
+  font-size: 2.4rem;
+  color: var(--main-color);
+  width: 100%;
+  height: 70%;
+  border-radius: var(--border-radius);
+  border: none;
+  padding: 3rem;   
+  resize:none;    
+}
+
+textarea.text-area {   
+  margin: 2rem 0;    
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+  background-image: url(./animated/plus-01.gif);    
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 10rem;
+  backdrop-filter: opacity(90%);
+  -webkit-backdrop-filter: opacity(90%);
+ 
+}
+
+textarea.mensagem {
+  background-color: gray;
+  background-image: url(./boneco.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+}
+.input {
+  width: 58%;
+  display: flex;
+  flex-direction: column;
+}
+.output {
+  width: 40%;
+}
+.output::before {
+  content: 'Nenhuma mensagem criptografada';
+  color: white;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  top: 60%;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+textarea.text-area::placeholder {
+  font-size: 2.8rem;
+  font-weight: 400;
+  color: var(--main-color);
+}
+
+
+.show textarea:focus-visible {
+  outline: none;
+  background-image: none;
+}
+
+textarea:focus-visible::placeholder{
+  opacity: 0;
+}
+
+.informacao {  
+  margin: 0rem 0 2rem 0;
+  color: var(--main-color);
+}
+.btns {
+  padding: 1.5rem 3.2rem;
+  font-size: 1.5rem;
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+}
+
+.btns.btn-encriptar {
+  background: var(--main-color);
+  color: #fff;
+}
+.btn-desencriptar {
+  margin-left: 2rem;
+  background: none;
+  border: 2px solid gray;
+}
+.btns i{    
+  font-size: 2rem;    
+}
+.btns.btn-copiar {    
+  position: relative;
+  padding: 1.2rem 3.2rem;
+  font-size: 1.4rem;    
+  bottom: 6rem;
+  right: 1rem;    
+  border-radius: 3rem;
+}
+.links {
+  text-decoration: none;
+  font-size: 1.8rem;
+  color: #3e3e3e;
+  padding: 2rem;
+}
+.container-button {
+  display: flex;
+  justify-content: flex-end;
+}
+.not-text {
+  position: absolute;
+  z-index: 6;
+}
+
+.none {
+  display:none;
+}
+
+.container-button .btn-copiar.copiable {
+  background-color: rgb(255, 255, 255);
+  color: var(--main-color);
+  opacity: 1;
+}
+.container-button[data-button-copy="false"] button{
+  opacity: .5;
+  background: rgb(170, 170, 170);
+  color: #fff;
+}
+
+.container-button[data-button-copy="false"]:hover::before  {
+  content: attr(data-status);
+  background-color:var(--main-color);
+  color: #fff;
+  border-radius: .5rem;
+  padding: 1rem;
+  position: absolute;    
+}
+.show .container-button[data-button-copy="false"]:hover::before  {
+  content: 'Copiar mensagem';
+  background-color:var(--main-color);
+  color: #fff;
+  border-radius: .5rem;
+  padding: 1rem;
+  position: absolute;    
+}
+
+.show .mensagem{
+  content: '';
+  color: #fff;
+ 
+  background-image: none;
+  
+background: #229FD3;
+background: radial-gradient(at left top, #229FD3, #1E198C);
+  background-color: var(--main-color);
+  backdrop-filter: opacity(50%);
+  -webkit-backdrop-filter: opacity(50%);
+
+}
+
+.output.show::before {    
+  content: 'Mensagem criptografada';
+}
+
+.modal[open] {
+  padding: 2rem;
+  background: #4CAF50;
+  border-radius: 4rem;
+  color: white;
+  position: absolute;
+  display: flex;
+  min-width: 32%;
+  justify-content: space-between;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin-left: auto;
+  margin-top: 2rem;
+  margin-right: 2rem;
+  border: 0;
+}
+.modal .ph-x {
+  font-size: 2.2rem;
+  cursor: pointer;
+}
+
+.icn-copy {
+  display: none;
+}
+
+.show .btn-copiar .icn-copy {
+  width: 55px;
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  display: block;
+}
+
+.show .btn-copiar  {
+  margin-right: 1rem;
+}
+.show textarea.text-area { 
+  
+  margin: 2rem 0;    
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;    
+  background-image: url(./animated/arrow-right-01.gif);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 10rem;
+  backdrop-filter: opacity(90%);
+  -webkit-backdrop-filter: opacity(90%);    
+  border: 1px solid #cccccc66
+}
